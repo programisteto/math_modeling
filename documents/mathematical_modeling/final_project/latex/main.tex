@@ -1,0 +1,46 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\graphicspath{images/}{../images/}}
+\usepackage{subfiles}
+\usepackage{natbib}
+\define\dobib{ % Define the command
+        \bibliographystyle{acm}
+            \bibliography{../references} 
+% Place the path relative to the
+% subfile here.            
+        }
+
+\linespread{2.0}
+
+\title{Where the Money At?}
+\author{Mitch Lowry}
+\date{May 2016}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+\subfile{sections/introduction}
+ 
+\section{Data Analysis}
+\subfile{sections/data_analysis}
+
+\section{Approach}
+\subfile{sections/approach}
+
+\section{Work Done}
+\subfile{sections/work_done}
+
+\section{Results}
+\subfile{sections/results}
+
+\section{Discussion of Results}
+\subfile{sections/discussion}
+
+\section{Conclusion and Future Work}
+\subfile{sections/conclusion}
+
+\bibliography{bibliography}
+
