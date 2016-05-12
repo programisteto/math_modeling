@@ -1,22 +1,54 @@
-\documentclass[../main.txt]{subfiles}
+\documentclass[../main.tex]{subfiles}
+\providecommand{\main}{..}
+%\biblio
+%\addbibresource{\main/main.bib}
 
 \begin{document}
 
-Talk about K-means clustering algorithm. Used Jupyter Notebook with the
-Python 3.0 kernel and the scipy library for clustering. Since the algorithm
-is initialized in this way, blah blah blah. It has been proven that
-algorithms initialized in this way, blah blah blah, then the algorithm is
-less prone to being affected by outliers, meaning the final results of who
-is in what cluster is less likely to be affected by outliers in the
-clustering data.
+Clustering algorithms are a good way to take large amounts of data and
+create subgroups based on specified characteristics. In this paper we
+implement the most common clustering algorithm, the $k$-means algorithm, which
+aims to partition $n$ observations into $k$ clusters where each observation
+is a $d$-dimensional vector that is put into the cluster that has a mean
+nearest to it's value. That is the goal is to minimize the sum
+over each of the clusters of the within cluster sum of squares value between
+the mean of the cluster and the points belonging to that cluster. This is 
+an NP-hard problem, so there are a few locally optimized algorithms
+that accomplish this goal \cite{wiki1}. The implementation used in this paper was Lloyd's
+algorithm, which initializes points, called centroids, in some say, and each
+observation belongs to the centroid nearest to it. The algorithm then
+repeats two steps until it terminates. It adjusts each centroid to be the
+mean of the observations that belong to it, and then, since the centroids
+have moved, the observations are reassigned to whatever centroid they are
+closest to. This continues until no observations change clusters, and it has
+been proven that the process monotonically decreases the sum of the within
+cluster sum of squares \cite{kmeans1}.
 
-Talk about Elbow method for testing. Choosing the correct number of
-clusters, $k$, for the clustering algorithm is many times ambigious,
-but there are methods for estimating the number of clusters CITE. When it
-comes to choosing the right $k$ for the algorithm is a balance between
-compression and accuracy. The main method is the Elbow method, which is blah
-blah blah.
+Note that this algorithm is finding a local optimum because it requires that
+we start by initializing centroids in some way. Analysis was done using the 
+Python 3.0 kernel in a Jupyter notebook using and the scipy.cluster.vq library for 
+clustering with the kmeans function, which initializes points simply by
+choosing centroids at random \cite{algorithm1}. There are certainly better methods for
+initializing these centroids, and this method is fairly poor in that the
+results of clustering are very sensitive to outliers. There are other
+methods of initialization, such as kmeans++, that cause clustering to be
+less sensitive to outliers \cite{kmeans1}.
 
+Choosing the correct number clusters, $k$, for the clustering algorithm is a
+balance between compression and accuracy, and many times the correct value
+of $k$ is ambiguous, but there are methods for estimating $k$. The most
+common method for doing this is called the elbow method. For this method the
+tradeoff between compression and accuracy is shown visually by making a
+connected scatterplot with a measure of the benefit of having more clusters
+on the $y$-axis and $k$ on the $x$-axis is used. We are looking for a value
+of $k$ where adding more values of $k$ will not improve accuracy much, and
+this point tends to look like an elbow on the aforementioned connected
+scatterplot \cite{elbow1}.
 
-\biblo
+After performing the elbow method and clustering, principal component
+analysis (PCA) is used to get a visual representation of how good our clusters
+are. PCA is reducing the dimensionality of data by finding dimensions with
+the most explained variability \cite{pca1}. In this way, we can attempt to
+view $d$ dimensional objects in two or three space.
+
 \end{document}

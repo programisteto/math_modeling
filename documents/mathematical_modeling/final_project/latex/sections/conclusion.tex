@@ -1,19 +1,27 @@
 \documentclass[../main.txt]{subfiles}
+\providecommand{\main}{..}
+%\biblio
+%\addbibresource{\main/main.bib}
 
 \begin{document}
 
-Conclusion, etc. A lot of stuff about future work.
+This short exercise in data mining turned out to be mostly unfruitful;
+however, much of the ground work for future clustering has been done here.
+I have processed the data and stored it in connected hash tables and wrote a function you can
+pass keys, outliers, and a maximum number of clusters, and it will perform
+the elbow method for you using whatever you are clustering over. I have also
+made a pretty easy process for extracting the biographical information of
+people clustered, but I could work on making it more automated. These tools
+make it easy to cluster over different subsets of the data, perhaps to look
+for kinds of alumni, parents, etc. I have stored the ids of different
+subgroups in lists (parents, former parents, alumni, staff, etc.), and I
+could simply pass these into the function that I wrote. Perhaps more
+interesting relationships can be found by pulling out all of the
+biographical information for clusters and performing an analysis somehow. It
+would be interesting to cluster people based on their donation history and
+then see if there are any interesting trends in the biographical information
+about these cluster. If
+the Office of Advancement is interested lists of ids for anyone in these
+clusters, posthumous donors, or other categories, just shoot me an email.
 
-
-
-
-
-
-
-
-
-
-
-
-\biblo
 \end{document}
